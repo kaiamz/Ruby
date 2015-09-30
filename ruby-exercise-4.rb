@@ -23,8 +23,17 @@ puts "Here are all the rhyming pairs from the ends of the Snowy lines"
 #   i += 9 # This is a short way of writing i = i + 1
 # end
 
+evenWords = []
+oddWords = []
+
 mapPoem = snowy_lines.map{|line| last_word line}
 mapPoem.delete(nil)
 
-evenWords = mapPoem.each_index{|x| puts mapPoem[x] if x.even?}
-oddWords = mapPoem.each_index{|x| puts mapPoem[x] if x.odd?}
+mapPoem.each_index{|x| evenWords.push(mapPoem[x]) if x.even?}
+mapPoem.each_index{|x| oddWords.push(mapPoem[x]) if x.odd?}
+
+evenWords.each_index do |i|
+  puts evenWords[i] + " " + oddWords[i]
+end
+
+# evenWords.each_index{|i| puts evenWords[i] + " " + oddWords[i]}
